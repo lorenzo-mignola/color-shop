@@ -11,6 +11,7 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    ...eslintPreset.rules
+    ...eslintPreset.rules,
+    'class-methods-use-this': 'off'
   }
 };

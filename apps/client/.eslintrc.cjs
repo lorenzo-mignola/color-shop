@@ -1,11 +1,21 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const eslintPreset = require('config/eslint-preset');
 
 module.exports = {
   ...eslintPreset,
-  extends: [...eslintPreset.extends, 'prettier'],
+  root: true,
+  extends: [
+    ...eslintPreset.extends,
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'prettier'
+  ],
   plugins: ['svelte3', ...eslintPreset.plugins],
+  ignorePatterns: ['*.cjs'],
   overrides: [{ files: ['*.svelte'], processor: 'svelte3/svelte3' }],
   settings: {
+    ...eslintPreset.settings,
     'svelte3/typescript': () => require('typescript')
   },
   parserOptions: {
@@ -21,6 +31,7 @@ module.exports = {
     node: true
   },
   rules: {
-    ...eslintPreset.rules
+    ...eslintPreset.rules,
+    'prettier/prettier': 'error'
   }
 };
