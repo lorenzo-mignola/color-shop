@@ -1,9 +1,13 @@
 module.exports = {
-  extends: ['airbnb-base', 'airbnb-typescript/base', 'prettier'],
+  extends: ['airbnb-base', 'prettier'],
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
   settings: {
-    'import/extensions': ['.js', '.mjs', '.jsx', '.ts', '.tsx']
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
+      }
+    }
   },
   rules: {
     'import/extensions': [

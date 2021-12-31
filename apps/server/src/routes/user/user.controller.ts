@@ -1,12 +1,13 @@
-import { Controller, GET } from 'fastify-decorators';
-import prisma from '../../prisma';
+import { FastifyInstance } from 'fastify';
+import UserService from './user.service';
 
-@Controller({ route: '/users' })
-export default class UserController {
-  @GET({ url: '/' })
-  async helloHandler() {
-    const allUsers = await prisma.user.findMany();
+const userController = async (fastify: FastifyInstance) => {
+  const userService = new UserService();
 
-    return { data: allUsers };
-  }
-}
+  fastify.get('/', async () => userService.getAll());
+  fastify.get<{
+    Params: { id: string };
+  }>('/:id', async req => userService.getById(req.params.id));
+};
+
+export default userController;

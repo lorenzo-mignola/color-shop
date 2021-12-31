@@ -1,16 +1,13 @@
 import Fastify, { FastifyInstance } from 'fastify';
-import { bootstrap } from 'fastify-decorators';
-import { resolve } from 'path';
 import prisma from './prisma';
+import user from './routes/user/user.controller';
 
-const server: FastifyInstance = Fastify({});
+const server: FastifyInstance = Fastify({ logger: true });
 
-server.register(bootstrap, {
-  directory: resolve(__dirname, 'routes'),
-  mask: /\.controller\./
+server.register(user, {
+  prefix: '/users'
 });
 
-// Run the server!
 const start = async () => {
   try {
     await server.listen(3030);
