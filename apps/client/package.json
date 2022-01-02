@@ -13,6 +13,7 @@
     "tailwind:watch": "cross-env TAILWIND_MODE=watch cross-env NODE_ENV=development postcss src/styles/tailwind.css -o src/styles/tailwind-output.css -w",
     "tailwind:build": "cross-env TAILWIND_MODE=build cross-env NODE_ENV=production postcss src/styles/tailwind.css -o src/styles/tailwind-output.css",
     "dev": "concurrently \"yarn run dev:only\" \"yarn run tailwind:watch\"",
+    "dev:open": "concurrently \"yarn run dev:only --open\" \"yarn run tailwind:watch\"",
     "build": "yarn run tailwind:build && yarn run build:only"
   },
   "devDependencies": {
@@ -35,5 +36,8 @@
     "tslib": "^2.3.1",
     "typescript": "^4.4.3"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "web3": "^1.6.1"
+  }
 }

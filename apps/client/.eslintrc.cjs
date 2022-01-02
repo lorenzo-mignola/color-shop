@@ -11,7 +11,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'prettier'
   ],
-  plugins: ['svelte3', ...eslintPreset.plugins],
+  plugins: ['svelte3', ...eslintPreset.plugins, 'prettier'],
   ignorePatterns: ['*.cjs'],
   overrides: [{ files: ['*.svelte'], processor: 'svelte3/svelte3' }],
   settings: {
@@ -32,6 +32,7 @@ module.exports = {
   },
   rules: {
     ...eslintPreset.rules,
-    'prettier/prettier': 'error'
+    'prettier/prettier': 'error',
+    'import/no-extraneous-dependencies': 'off'
   }
 };
