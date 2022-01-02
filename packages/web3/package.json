@@ -5,5 +5,11 @@
   "license": "MIT",
   "dependencies": {
     "truffle": "^5.4.26"
+  },
+  "scripts": {
+    "test": "truffle test",
+    "compile": "truffle compile",
+    "migrate": "truffle migrate",
+    "migrate:reset": "truffle migrate -reset"
   }
 }
