@@ -1,18 +1,21 @@
 import Fastify, { FastifyInstance } from 'fastify';
+import cors from 'fastify-cors';
 import prisma from './prisma';
-import user from './routes/user/user.controller';
+import registerRoutes from './routes';
 
-const server: FastifyInstance = Fastify({ logger: true });
+const fastify: FastifyInstance = Fastify({ logger: true });
 
-server.register(user, {
-  prefix: '/users'
+registerRoutes(fastify);
+
+fastify.register(cors, {
+  origin: '*'
 });
 
 const start = async () => {
   try {
-    await server.listen(3030);
+    await fastify.listen(3030);
   } catch (err) {
-    server.log.error(err);
+    fastify.log.error(err);
     await prisma.$disconnect();
     process.exit(1);
   }

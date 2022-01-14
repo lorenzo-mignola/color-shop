@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store';
 
-// eslint-disable-next-line import/prefer-default-export
-export const account = writable(null);
+export const account = writable<null | string>(null);
+
+export const color = writable<null | string>(null);
