@@ -1,5 +1,5 @@
 {
-  "name": "web3",
+  "name": "@color-shop/web3",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -11,5 +11,8 @@
     "compile": "truffle compile",
     "migrate": "truffle migrate",
     "migrate:reset": "truffle migrate -reset"
-  }
+  },
+  "files": [
+    "./build/contracts/Color.json"
+  ]
 }
