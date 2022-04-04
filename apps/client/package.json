@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@color-shop/web3": "*",
+    "axios": "^0.26.1",
     "evergreen-ui": "^6.9.5",
     "next": "12.1.2",
     "react": "18.0.0",

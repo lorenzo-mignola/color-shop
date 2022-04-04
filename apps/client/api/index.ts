@@ -2,4 +2,7 @@ import axios from 'axios';
 
 const SERVER = 'http://localhost:3030';
 
-export const getRandomColor = () => axios.get(`${SERVER}/color`);
+export const getRandomColor = async () => {
+  const { data: color } = await axios.get<string>(`${SERVER}/color`);
+  return color;
+};

@@ -1,6 +1,7 @@
 {
   "name": "@color-shop/web3",
   "version": "1.0.0",
+  "private": true,
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
@@ -13,6 +14,6 @@
     "migrate:reset": "truffle migrate -reset"
   },
   "files": [
-    "./build/contracts/Color.json"
+    "build/contracts/Color.json"
   ]
 }

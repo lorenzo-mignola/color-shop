@@ -1,9 +1,9 @@
-import { Button } from 'evergreen-ui';
 import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import web3 from 'web3';
-//@ts-ignore
-import Color from './contracts/Color.json';
+import Color from '../../../packages/web3/build/contracts/Color.json';
+import ColorCard from '../components/ColorCard';
+import CreateColorButton from '../components/CreateColorButton';
 
 const Home: NextPage = () => {
   const [account, setAccount] = useState('');
@@ -37,8 +37,8 @@ const Home: NextPage = () => {
   };
 
   const load = async () => {
-    await loadWeb3();
-    await loadBlockchainData();
+    // await loadWeb3();
+    // await loadBlockchainData();
   };
 
   useEffect(() => {
@@ -47,7 +47,8 @@ const Home: NextPage = () => {
 
   return (
     <div>
-      <Button appearance='primary'>asd</Button>
+      <ColorCard color='#FFAA00' />
+      <CreateColorButton />
     </div>
   );
 };
