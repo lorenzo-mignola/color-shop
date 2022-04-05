@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const Header = () => {
   return (
     <nav>
@@ -30,7 +32,11 @@ const Header = () => {
         }
       `}</style>
       <h1>
-        <b>Color Shop</b>
+        <Link href='/' replace>
+          <a>
+            <b>Color Shop</b>
+          </a>
+        </Link>
       </h1>
     </nav>
   );

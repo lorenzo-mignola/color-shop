@@ -1,12 +1,35 @@
 import { Button } from 'evergreen-ui';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { getRandomColor } from '../api';
 
 const CreateColorButton = () => {
-  const { data: newColor } = useQuery('newColor', getRandomColor);
+  const [clicked, setClicked] = useState(false);
+  console.log('clg -> CreateColorButton -> clicked', clicked);
+  const router = useRouter();
+
+  const { data: newColor, remove } = useQuery('newColor', getRandomColor, {
+    enabled: clicked
+  });
+
+  useEffect(() => {
+    setClicked(false);
+
+    return () => {
+      setClicked(false);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (newColor) {
+      router.push(`/color/${newColor.replace('#', '')}`);
+      remove();
+    }
+  }, [newColor, router, remove]);
 
   const handleClick = () => {
-    console.log('clg', newColor);
+    setClicked(true);
   };
 
   return (
@@ -15,11 +38,11 @@ const CreateColorButton = () => {
         div {
           display: flex;
           justify-content: center;
-          margin: 6rem 0;
+          margin: 3rem 0;
         }
       `}</style>
       <div>
-        <Button appearance='primary' onClick={handleClick}>
+        <Button appearance='primary' onClick={handleClick} disabled={clicked}>
           Generate color
         </Button>
       </div>

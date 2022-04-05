@@ -37,8 +37,8 @@ const Home: NextPage = () => {
   };
 
   const load = async () => {
-    // await loadWeb3();
-    // await loadBlockchainData();
+    await loadWeb3();
+    await loadBlockchainData();
   };
 
   useEffect(() => {
