@@ -6,7 +6,6 @@ import { getRandomColor } from '../api';
 
 const CreateColorButton = () => {
   const [clicked, setClicked] = useState(false);
-  console.log('clg -> CreateColorButton -> clicked', clicked);
   const router = useRouter();
 
   const { data: newColor, remove } = useQuery('newColor', getRandomColor, {
@@ -42,7 +41,7 @@ const CreateColorButton = () => {
         }
       `}</style>
       <div>
-        <Button appearance='primary' onClick={handleClick} disabled={clicked}>
+        <Button appearance='primary' onClick={handleClick} disabled={clicked} heigh={70}>
           Generate color
         </Button>
       </div>
